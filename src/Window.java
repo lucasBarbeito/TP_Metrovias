@@ -1,5 +1,5 @@
 import java.lang.Float;
-
+import
 public class Window {
     private Queue espera;
     private float recaudado;
@@ -15,7 +15,7 @@ public class Window {
 
     public void addPerson(Person p) {
         espera.encolar(p);
-        recaudado=recaudado+0,70;
+        recaudado = recaudado + 0,70;
     }
 
     public Person dispatchPerson() {
