@@ -1,19 +1,14 @@
-import static java.lang.System.currentTimeMillis;
+import java.time.LocalDateTime;
 
 public class Person {
-    private int ticketNumber;
-    private float time;
 
-    public Person(int ticketNumber) {
-        this.ticketNumber = ticketNumber;
-        time = currentTimeMillis();
+    private LocalDateTime entryTime;
+
+    public Person(LocalDateTime entryTime) {
+        this.entryTime = entryTime;
     }
 
-    public void closeTime() {
-        time = currentTimeMillis()- time;
-    }
-
-    public float getTime() {
-        return time;
+    public LocalDateTime getEntryTime() {
+        return entryTime;
     }
 }

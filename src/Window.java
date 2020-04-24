@@ -1,29 +1,55 @@
-import java.lang.Float;
+import StackAndQueue.Queue;
+import StackAndQueue.QueueIsEmptyException;
+
+import java.time.LocalTime;
 
 public class Window {
-    private Queue espera;
-    private float recaudado;
-    private int cantpersonas;
-    private Float averageTime;
 
-    //int totalMoneyCollected;
-    //Stack<Person> people;
+    private Queue<Person> waitingLine;
+    private float price;
+    private int totalPeopleAttended;
+    private LocalTime lastClientAttended;
 
-    public Window() {
+
+    public Window(float price) {
+        this.waitingLine = new Queue();
+        this.totalPeopleAttended = 0;
+        this.price = price;
+    }
+
+    public void addPerson(Person person){
+        waitingLine.enqueue(person);
+        totalPeopleAttended++;
+    }
+
+    public Ticket callNext(LocalTime finishingTime) throws WindowIsEmptyException {
+        try {
+            waitingLine.dequeue();
+            lastClientAttended = finishingTime;
+            return new Ticket(finishingTime);
+        } catch (QueueIsEmptyException e){
+            throw new WindowIsEmptyException();
+        }
 
     }
 
-    public void addPerson(Person p) {
-        espera.encolar(p);
-        recaudado = recaudado + 0,70;
+    public double getTotalMoneyEarned(){
+        return price*totalPeopleAttended;
     }
 
-    public Person dispatchPerson() {
-        Person p = (Person) espera.getFrente();
-        p.closeTime();
-        cantpersonas++;
-        averageTime = averageTime +p.getTime();
-        return p;
+    public float getAverageTimeInSeconds(LocalTime startingTime) {
+        int differenceInSeconds = lastClientAttended.getSecond() - startingTime.getSecond();
+        int differenceInMinutes = lastClientAttended.getMinute() - startingTime.getMinute();
+        int differenceInHours = lastClientAttended.getHour() - startingTime.getHour();
+        if (differenceInSeconds < 0){
+            differenceInSeconds += 60;
+            --differenceInMinutes;
+        }
+        if (differenceInMinutes < 0){
+            differenceInMinutes += 60;
+            --differenceInHours;
+        }
+        return (differenceInHours*3600 + differenceInMinutes * 60 + differenceInSeconds)/totalPeopleAttended;
     }
 
 }
