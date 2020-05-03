@@ -30,7 +30,7 @@ public class SubwaySimulation {
                 }
                 for (int i = 0; i < amountOfWindows; i++) {
                     if (Math.random() >= 0.5){
-                        subway.callNextinWindow(i, entryTime);
+                        subway.callNextInWindow(i, entryTime);
                     }
                 }
             }

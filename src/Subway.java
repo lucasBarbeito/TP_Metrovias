@@ -20,7 +20,7 @@ public class Subway {
         windows[windowChosen].addPerson(person);
     }
 
-    public void callNextinWindow(int windowChosen, LocalTime finishingTime){
+    public void callNextInWindow(int windowChosen, LocalTime finishingTime){
         try {
             tickets.push(windows[windowChosen].callNext(finishingTime));
         } catch (WindowIsEmptyException e){

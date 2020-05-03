@@ -12,7 +12,7 @@ public class Window {
 
 
     public Window(float price) {
-        this.waitingLine = new Queue();
+        this.waitingLine = new Queue<>();
         this.totalPeopleAttended = 0;
         this.price = price;
     }
