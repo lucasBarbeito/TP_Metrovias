@@ -12,6 +12,8 @@ public class Subway {
         for (int i = 0; i < numberOfWindows; i++) {
             windows[i] = new Window(price);
         }
+        tickets = new Stack<>();
+        this.startingTime = startingTime;
     }
 
     public void receivePerson(int windowChosen, Person person){
@@ -28,14 +30,14 @@ public class Subway {
 
     public void showWindowsAverageTime(){
         for (int i = 0; i < windows.length; i++) {
-            System.out.println("Window " + i + "average time is: " +
+            System.out.println("Window " + i + " average time is: " +
                     windows[i].getAverageTimeInSeconds(startingTime));
         }
     }
 
     public void showWindowsEarnings(){
         for (int i = 0; i < windows.length; i++) {
-            System.out.println("Window " + i + "earnings are: " +
+            System.out.println("Window " + i + " earnings are: " +
                     windows[i].getTotalMoneyEarned());
         }
     }

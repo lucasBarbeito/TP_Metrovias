@@ -1,14 +1,14 @@
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class Person {
 
-    private LocalDateTime entryTime;
+    private LocalTime entryTime;
 
-    public Person(LocalDateTime entryTime) {
+    public Person(LocalTime entryTime) {
         this.entryTime = entryTime;
     }
 
-    public LocalDateTime getEntryTime() {
+    public LocalTime getEntryTime() {
         return entryTime;
     }
 }
