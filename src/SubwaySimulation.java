@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class SubwaySimulation {
 
     public static void main(String[] args) {
-        Scanner scanner= new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         LocalTime startingTime = LocalTime.now();
         System.out.print("Price: ");
         float price = scanner.nextFloat();
